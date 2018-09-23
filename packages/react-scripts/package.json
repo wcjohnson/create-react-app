@@ -21,8 +21,8 @@
     "react-scripts": "./bin/react-scripts.js"
   },
   "dependencies": {
-    "@lightscript/babel-preset": "4.0.0-alpha.6",
-    "@lightscript/eslint-plugin": "4.0.0-alpha.6",
+    "@lightscript/babel-preset": "4.0.0-alpha.8",
+    "@lightscript/eslint-plugin": "^4.0.0-alpha.8",
     "@babel/core": "7.1.0",
     "@babel/runtime": "7.0.0",
     "@babel/preset-react": "7.0.0",
