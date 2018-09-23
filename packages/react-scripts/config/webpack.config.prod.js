@@ -185,7 +185,10 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx',
+      // LightScript
+      '.lsc', '.lsx'
+    ],
     alias: {
       // @remove-on-eject-begin
       // Resolve Babel runtime relative to react-scripts.
@@ -218,23 +221,15 @@ module.exports = {
       // First, run the linter.
       // It's important to do this before Babel processes the JS.
       {
-        test: /\.(js|jsx)$/,
+        // LightScript: file extensions
+        test: /\.(js|jsx|lsc|lsx)$/,
         enforce: 'pre',
         use: [
           {
             options: {
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
               eslintPath: require.resolve('eslint'),
-              // @remove-on-eject-begin
-              // TODO: consider separate config for production,
-              // e.g. to enable no-console and no-debugger only in production.
-              baseConfig: {
-                extends: [require.resolve('eslint-config-react-app')],
-                settings: { react: { version: '999.999.999' } },
-              },
-              ignore: false,
-              useEslintrc: false,
-              // @remove-on-eject-end
+              // LightScript: let user configure the linter
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -259,7 +254,8 @@ module.exports = {
           // Process application JS with Babel.
           // The preset includes JSX, Flow, and some ESnext features.
           {
-            test: /\.(js|jsx)$/,
+            // LightScript: file extensions
+            test: /\.(js|jsx|lsc|lsx)$/,
             include: paths.appSrc,
             use: [
               // This loader parallelizes code compilation, it is optional but
@@ -268,21 +264,7 @@ module.exports = {
               {
                 loader: require.resolve('babel-loader'),
                 options: {
-                  // @remove-on-eject-begin
-                  babelrc: false,
-                  presets: [require.resolve('babel-preset-react-app')],
-                  // Make sure we have a unique cache identifier, erring on the
-                  // side of caution.
-                  // We remove this when the user ejects because the default
-                  // is sane and uses Babel options. Instead of options, we use
-                  // the react-scripts and babel-preset-react-app versions.
-                  cacheIdentifier: getCacheIdentifier('production', [
-                    'babel-plugin-named-asset-import',
-                    'babel-preset-react-app',
-                    'react-dev-utils',
-                    'react-scripts',
-                  ]),
-                  // @remove-on-eject-end
+                  // LightScript: use .babelrc
                   plugins: [
                     [
                       require.resolve('babel-plugin-named-asset-import'),
@@ -406,7 +388,8 @@ module.exports = {
             // it's runtime that would otherwise be processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
+            // LightScript: file extensions
+            exclude: [/\.(js|jsx|lsc|lsx)$/, /\.html$/, /\.json$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },

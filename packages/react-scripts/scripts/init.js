@@ -98,10 +98,7 @@ module.exports = function(
     eject: 'react-scripts eject',
   };
 
-  // Setup the eslint config
-  appPackage.eslintConfig = {
-    extends: 'react-app',
-  };
+  // LightScript: use .eslintrc
 
   // Setup the browsers list
   appPackage.browserslist = defaultBrowsers;
