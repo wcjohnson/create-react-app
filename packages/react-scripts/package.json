@@ -1,6 +1,6 @@
 {
   "name": "@lightscript/react-scripts",
-  "version": "4.0.0-alpha.6",
+  "version": "4.0.0-alpha.8",
   "description": "Configuration and scripts for Create React App.",
   "repository": "https://github.com/wcjohnson/lightscript-react-scripts.git",
   "license": "MIT",
@@ -84,6 +84,9 @@
   },
   "optionalDependencies": {
     "fsevents": "1.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "browserslist": [
     ">0.25%",
